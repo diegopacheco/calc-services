@@ -1,0 +1,17 @@
+version: '3'
+services:
+  agg:
+    image: "diegopacheco/app-scala:v1"
+    environment:
+      SUB_SERVICE_URL: http://sub:8081/service/sub
+      MUL_SERVICE_URL: http://mul:8082/service/sub
+      DIV_SERVICE_URL: http://div:8083/service/sub
+      SUM_SERVICE_URL: http://sub:8084/service/sub
+  sum:
+    image: "diegopacheco/sum-rust:v1"
+  mul:
+    image: "diegopacheco/mul-java:v1"
+  sub:
+    image: "diegopacheco/sub-python:v1"
+  div:
+    image: "diegopacheco/div-go:v1"
