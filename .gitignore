@@ -26,3 +26,4 @@ div-service-go/div-service-go
 
 # Rust binaries
 target/
+aggregator-service-scala/target/
