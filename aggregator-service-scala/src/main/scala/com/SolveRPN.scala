@@ -10,6 +10,7 @@ object SolveRPN {
     def get(url: String) = scala.io.Source.fromURL(url).mkString
 
     def call(op:String,va:String,vb:String):Double = {
+        println("Calling: " + op)
         get(op+"?va="+va+"&vb="+vb).toDouble
     }
 
