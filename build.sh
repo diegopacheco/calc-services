@@ -23,5 +23,5 @@ cd ../
 
 echo "Building Rust... "
 cd sum-service-rust/
-cargo build
+cargo build --release
 cd ../

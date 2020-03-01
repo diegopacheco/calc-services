@@ -23,3 +23,6 @@
 hs_err_pid*
 
 div-service-go/div-service-go
+
+# Rust binaries
+target/
