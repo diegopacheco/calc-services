@@ -14,6 +14,11 @@ services:
       - mul 
       - sub
       - div
+    links:
+      - sum:sum
+      - mul:mul
+      - sub:sub
+      - div:div
   sum:
     image: diegopacheco/sum-rust:v1
     ports:
