@@ -1,10 +1,9 @@
-FROM golang:alpine AS builder
-RUN apk update && apk add --no-cache git
+FROM golang:1.12.0-alpine3.9
+RUN apk add --no-cache git mercurial \
+    && go get -u github.com/gin-gonic/gin \
+    && apk del git mercurial
 RUN mkdir /app
+ADD . /app
 WORKDIR /app
-COPY . .
-RUN go get -d -v \ 
-    && RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /app/div-service-go
-FROM scratch
-COPY --from=builder /app/div-service-go /app/div-service-go
-ENTRYPOINT ["/app/div-service-go"]
+RUN go build -o main .
+CMD ["/app/main"]
