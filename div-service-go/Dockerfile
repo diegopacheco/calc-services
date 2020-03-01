@@ -1,9 +1,10 @@
 FROM golang:alpine AS builder
 RUN apk update && apk add --no-cache git
-WORKDIR $GOPATH/src/mypackage/myapp/
+RUN mkdir /app
+WORKDIR /app
 COPY . .
-RUN go get -d -v
-RUN go build -o div-service-go
+RUN go get -d -v \ 
+    && RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /app/div-service-go
 FROM scratch
-COPY --from=builder /go/bin/hello /go/bin/hello
-ENTRYPOINT ["/go/bin/hello"]
+COPY --from=builder /app/div-service-go /app/div-service-go
+ENTRYPOINT ["/app/div-service-go"]
