@@ -13,16 +13,11 @@ object App {
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = system.dispatcher
 
-    val DIV_SERVICE_URL = System.getenv("DIV_SERVICE_URL")
-    val SUB_SERVICE_URL = System.getenv("SUB_SERVICE_URL")
-    val MUL_SERVICE_URL = System.getenv("MUL_SERVICE_URL")
-    val SUM_SERVICE_URL = System.getenv("SUM_SERVICE_URL")
-    println(s"DIV_SERVICE_URL=${DIV_SERVICE_URL} \n SUB_SERVICE_URL=${SUB_SERVICE_URL} \n MUL_SERVICE_URL=${MUL_SERVICE_URL} \n SUM_SERVICE_URL=${SUM_SERVICE_URL} \n")    
-
-    SolveRPN.DIV_SERVICE_URL=DIV_SERVICE_URL
-    SolveRPN.SUB_SERVICE_URL=SUB_SERVICE_URL
-    SolveRPN.MUL_SERVICE_URL=MUL_SERVICE_URL
-    SolveRPN.SUM_SERVICE_URL=SUM_SERVICE_URL
+    SolveRPN.SUB_SERVICE_URL = System.getenv("SUB_SERVICE_URL")
+    SolveRPN.MUL_SERVICE_URL = System.getenv("MUL_SERVICE_URL")
+    SolveRPN.DIV_SERVICE_URL = System.getenv("DIV_SERVICE_URL")
+    SolveRPN.SUM_SERVICE_URL = System.getenv("SUM_SERVICE_URL")
+    println(s"SUB_SERVICE_URL=${SolveRPN.SUB_SERVICE_URL}\nMUL_SERVICE_URL=${SolveRPN.MUL_SERVICE_URL}\nDIV_SERVICE_URL=${SolveRPN.DIV_SERVICE_URL}\nSUM_SERVICE_URL=${SolveRPN.SUM_SERVICE_URL}\n")    
 
     val route =
       path("service") {
