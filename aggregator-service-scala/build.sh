@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sbt assembly
+sbt clean compile package assembly
