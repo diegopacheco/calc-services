@@ -1,8 +1,7 @@
-FROM rust:latest as cargo-build
+FROM rust:alpine3.10
 RUN mkdir /app
 WORKDIR /app
 COPY . .
-RUN cargo build --release
-FROM alpine:latest
-COPY --from=cargo-build /app/target/release/main /usr/local/bin/main
-CMD ["/usr/local/bin/main"]
+RUN apk --no-cache add --update curl g++ build-base
+RUN RUSTFLAGS="-C target-feature=-crt-static" cargo build --release
+CMD ["/app/target/release/main"]
