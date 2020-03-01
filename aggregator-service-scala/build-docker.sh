@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t diegopacheco/aggregate-scala:v1 .
+docker build -t diegopacheco/agg-scala:v1 .

@@ -33,9 +33,9 @@ object App {
           }
         }
       }
-    val bindingFuture = Http().bindAndHandle(route, "0.0.0.0", 8080)
+    val bindingFuture = Http().bindAndHandle(route, "0.0.0.0", 8090)
 
-    println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
+    println(s"Server online at http://localhost:8090/\nPress RETURN to stop...")
     StdIn.readLine()
   }
 }

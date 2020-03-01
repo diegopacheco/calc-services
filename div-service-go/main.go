@@ -16,5 +16,5 @@ func main() {
 		result := vaNumber / vbNumber
 		c.JSON(200, result)
 	})
-	r.Run()
+	r.Run(":6000")
 }

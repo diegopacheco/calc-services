@@ -2,21 +2,15 @@ package com
 
 object SolveRPN {
 
-    def DIV_SERVICE_URL:String = ""
-    def SUB_SERVICE_URL:String = ""
-    def MUL_SERVICE_URL:String = ""
-    def SUM_SERVICE_URL:String = ""
+    var DIV_SERVICE_URL:String = ""
+    var SUB_SERVICE_URL:String = ""
+    var MUL_SERVICE_URL:String = ""
+    var SUM_SERVICE_URL:String = ""
 
     def get(url: String) = scala.io.Source.fromURL(url).mkString
 
-    def call(String op,Double va,Double vb) = String {
-        result = op match {
-            case "*" => get(MUL_SERVICE_URL+"?va="+va+"&vb="+vb);
-            case "+" => get(SUM_SERVICE_URL+"?va="+va+"&vb="+vb);
-            case "-" => get(SUB_SERVICE_URL+"?va="+va+"&vb="+vb);
-            case "/" => get(DIV_SERVICE_URL+"?va="+va+"&vb="+vb);
-        }
-        return Double.parseDouble(result)
+    def call(op:String,va:String,vb:String):Double = {
+        get(op+"?va="+va+"&vb="+vb).toDouble
     }
 
     def solve(eqn:String): Double = {
@@ -28,11 +22,12 @@ object SolveRPN {
         case List() => a.toDouble :: stack 
         case List(_) => a.toDouble :: stack
         case x::y::ys => a match {
-            case "*" => call("*",x,y) :: ys
-            case "+" => call("+",x,y) :: ys
-            case "-" => call("-",x,y) :: ys
-            case "/" => call("/",x,y) :: ys
+            case "*" => call(MUL_SERVICE_URL,x.toString,y.toString) :: ys
+            case "+" => call(SUM_SERVICE_URL,x.toString,y.toString) :: ys
+            case "-" => call(SUB_SERVICE_URL,x.toString,y.toString) :: ys
+            case "/" => call(DIV_SERVICE_URL,x.toString,y.toString) :: ys
             case s: String => s.toDouble :: stack
         }
     }
+
 }
