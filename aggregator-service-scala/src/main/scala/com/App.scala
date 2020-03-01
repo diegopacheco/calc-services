@@ -9,7 +9,6 @@ import scala.io.StdIn
 
 object App {
   def main(args: Array[String]) {
-
     implicit val system = ActorSystem("my-system")
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = system.dispatcher
@@ -20,12 +19,17 @@ object App {
     val SUM_SERVICE_URL = System.getenv("SUM_SERVICE_URL")
     println(s"DIV_SERVICE_URL=${DIV_SERVICE_URL} \n SUB_SERVICE_URL=${SUB_SERVICE_URL} \n MUL_SERVICE_URL=${MUL_SERVICE_URL} \n SUM_SERVICE_URL=${SUM_SERVICE_URL} \n")    
 
+    SolveRPN.DIV_SERVICE_URL=DIV_SERVICE_URL
+    SolveRPN.SUB_SERVICE_URL=SUB_SERVICE_URL
+    SolveRPN.MUL_SERVICE_URL=MUL_SERVICE_URL
+    SolveRPN.SUM_SERVICE_URL=SUM_SERVICE_URL
+
     val route =
       path("service") {
         get {
           parameter("math".as[String]) { (math) =>
               println("OP: " + math)
-              complete((StatusCodes.Accepted, math))
+              complete((StatusCodes.Accepted, SolveRPN.solve(math)+""))
           }
         }
       }
