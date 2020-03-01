@@ -2,11 +2,13 @@ version: '3'
 services:
   agg:
     image: diegopacheco/agg-scala:v1
+    ports:
+      - "8090"  
     environment:
-      SUB_SERVICE_URL: http://sub:5000/service/sub
-      MUL_SERVICE_URL: http://mul:8080/service/sub
-      DIV_SERVICE_URL: http://div:6000/service/sub
-      SUM_SERVICE_URL: http://sub:3000/service/sub
+      SUB_SERVICE_URL: "http://sub:5000/service/sub"
+      MUL_SERVICE_URL: "http://mul:8080/service/sub"
+      DIV_SERVICE_URL: "http://div:6000/service/sub"
+      SUM_SERVICE_URL: "http://sub:3000/service/sub"
     depends_on:
       - sum
       - mul 
@@ -14,9 +16,17 @@ services:
       - div
   sum:
     image: diegopacheco/sum-rust:v1
+    ports:
+      - "3000"    
   mul:
     image: diegopacheco/mul-java:v1
+    ports:
+      - "8080"   
   sub:
     image: diegopacheco/sub-python:v1
+    ports:
+      - "5000"   
   div:
     image: diegopacheco/div-go:v1
+    ports:
+      - "6000"   
