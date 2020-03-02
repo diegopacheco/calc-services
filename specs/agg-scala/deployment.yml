@@ -16,13 +16,13 @@ spec:
         image: diegopacheco/agg-scala:v1
         env:
           - name: SUB_SERVICE_URL
-            value: "http://sub:5000/service/sub"
+            value: "http://subpython.default.svc.cluster.local:5000/service/sub"
           - name: MUL_SERVICE_URL
-            value: "http://mul:8080/service/mul"
+            value: "http://muljava.default.svc.cluster.local:8080/service/mul"
           - name: DIV_SERVICE_URL
-            value: "http://div:6000/service/div"
+            value: "http://divgo.default.svc.cluster.local:6000/service/div"
           - name: SUM_SERVICE_URL
-            value: "http://sum:3000/service/sum"
+            value: "http://sumrust.default.svc.cluster.local:3000/service/sum"
         resources:
           limits:
             memory: "1024Mi"
