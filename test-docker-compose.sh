@@ -15,3 +15,7 @@ echo "Mul 3 * 2 == $EX"
 IP=$(docker inspect calc-services_div_1 | jq -r '.[].NetworkSettings.Networks[].IPAddress')
 EX=$(curl -s "http://$IP:6000/service/div?va=8&vb=2")
 echo "Div 8 / 2 == $EX"
+
+IP=$(docker inspect calc-services_agg_1 | jq -r '.[].NetworkSettings.Networks[].IPAddress')
+EX=$(curl -s "http://$IP:8090/service/math?=1%201%20%2B")
+echo "AGG 1 + 1 == $EX"
