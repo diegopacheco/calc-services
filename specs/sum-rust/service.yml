@@ -7,9 +7,13 @@ metadata:
     role: service
     tier: backend
 spec:
+  type: NodePort
   ports:
-  - port: 3000
+  - name: default
+    protocol: TCP
+    port: 3000
     targetPort: 3000
+    nodePort: 3000
   selector:
     app: sumrust
     role: service
