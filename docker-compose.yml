@@ -6,9 +6,9 @@ services:
       - "8090:8090"  
     environment:
       SUB_SERVICE_URL: "http://sub:5000/service/sub"
-      MUL_SERVICE_URL: "http://mul:8080/service/sub"
-      DIV_SERVICE_URL: "http://div:6000/service/sub"
-      SUM_SERVICE_URL: "http://sub:3000/service/sub"
+      MUL_SERVICE_URL: "http://mul:8080/service/mul"
+      DIV_SERVICE_URL: "http://div:6000/service/div"
+      SUM_SERVICE_URL: "http://sub:3000/service/sum"
     depends_on:
       - sum
       - mul 
