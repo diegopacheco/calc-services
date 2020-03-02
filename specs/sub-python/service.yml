@@ -12,5 +12,3 @@ spec:
     targetPort: 5000
   selector:
     app: subpython
-    role: service
-    tier: backend

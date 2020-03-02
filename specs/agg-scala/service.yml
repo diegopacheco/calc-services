@@ -12,5 +12,3 @@ spec:
     targetPort: 8090
   selector:
     app: aggscala
-    role: service
-    tier: backend

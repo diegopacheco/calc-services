@@ -15,5 +15,3 @@ spec:
     targetPort: 3000
   selector:
     app: sumrust
-    role: service
-    tier: backend

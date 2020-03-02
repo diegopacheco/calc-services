@@ -12,5 +12,3 @@ spec:
     targetPort: 8080
   selector:
     app: muljava
-    role: service
-    tier: backend
