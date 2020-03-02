@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muljava
+spec:
+  selector:
+    matchLabels:
+      app: muljava
+  template:
+    metadata:
+      labels:
+        app: muljava
+    spec:
+      containers:
+      - name: muljava
+        image: diegopacheco/mul-java:v1
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080

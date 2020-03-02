@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subpython
+spec:
+  selector:
+    matchLabels:
+      app: subpython
+  template:
+    metadata:
+      labels:
+        app: subpython
+    spec:
+      containers:
+      - name: subpython
+        image: diegopacheco/sub-python:v1
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000

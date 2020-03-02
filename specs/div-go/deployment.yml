@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: divgo
+spec:
+  selector:
+    matchLabels:
+      app: divgo
+  template:
+    metadata:
+      labels:
+        app: divgo
+    spec:
+      containers:
+      - name: divgo
+        image: diegopacheco/div-go:v1
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 6000

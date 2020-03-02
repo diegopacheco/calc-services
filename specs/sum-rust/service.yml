@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sumrust
+  labels:
+    app: sumrust
+    role: service
+    tier: backend
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: sumrust
+    role: service
+    tier: backend

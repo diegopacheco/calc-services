@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumrust
+spec:
+  selector:
+    matchLabels:
+      app: sumrust
+  template:
+    metadata:
+      labels:
+        app: sumrust
+    spec:
+      containers:
+      - name: sumrust
+        image: diegopacheco/sum-rust:v1
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
