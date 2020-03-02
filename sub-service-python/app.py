@@ -13,4 +13,4 @@ def sub():
     print("VA: " + str(va) + " VB: " + str(vb) + " == " + str(result))
     return Response(str(result))
 
-app.run()
+app.run(host='0.0.0.0')
