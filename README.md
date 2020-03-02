@@ -2,9 +2,20 @@
 
 calc-services: Constellation of 5 microservices doing polish notation and working together. 
 
-## Services
+## How to Run
 
+Terminal 1
+```bash
+docker-compose up
 ```
+Terminal 2
+```bash
+./test-docker-compose.sh
+```
+
+## Services
+```
+
 aggregator-service-scala: Does the Polish notation agreggation using all services and aggregates the final result. <BR>
 This microservice is build with Scala 2.13 and Akka Http 2.x 
 
