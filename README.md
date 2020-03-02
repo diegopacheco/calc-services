@@ -2,8 +2,20 @@
 
 calc-services: Constellation of 5 microservices doing polish notation and working together. 
 
-## How to Run
+## How to Run in Kubernetes(Minikube)
+Terminal 1
+```bash
+./create-minikube.sh
+./k8s-deploy.sh
+./k8s-port-forward-scala-agg.sh
+```
+Terminal 2
+```bash
+kubectl get all -o wide
+./test-k8s-agg.sh
+```
 
+## How to Run on Docker-Compose
 Terminal 1
 ```bash
 docker-compose up
