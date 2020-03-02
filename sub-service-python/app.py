@@ -9,7 +9,7 @@ def sub():
     qp = request.args
     va = qp.get('va')
     vb = qp.get('vb')
-    result = float(va) + float(vb)  
+    result = float(va) - float(vb)  
     print("VA: " + str(va) + " VB: " + str(vb) + " == " + str(result))
     return Response(str(result))
 
