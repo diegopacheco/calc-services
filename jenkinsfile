@@ -1,0 +1,38 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Git Clone') {
+         steps {
+            git 'https://github.com/diegopacheco/calc-services.git'
+         }
+      }
+      stage('Build Rust') {
+         steps {
+            sh 'cd sum-service-rust/ && /home/diego/.cargo/bin/cargo build && cd ../'
+         }
+      }
+      stage('Build Java') {
+         steps {
+            sh 'cd mul-service-java/ && ./gradlew build && cd ../'
+         }
+      }
+      stage('Build Go') {
+         steps {
+            sh 'cd div-service-go/ && ./install-deps.sh && go build && cd ../'
+         }
+      }      
+      stage('Build Python') {
+         steps {
+            sh 'cd sub-service-python/ && pip3 install -r requirements.txt && cd ../'
+         }
+      }      
+      stage('Build Scala') {
+         steps {
+            sh 'cd aggregator-service-scala/ && sbt compile package && cd ../'
+         }
+      }
+   }
+   
+}
+
